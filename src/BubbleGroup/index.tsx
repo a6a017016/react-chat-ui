@@ -3,7 +3,7 @@ import BubbleGroupInterface from './interface';
 import DefaultChatBubble from '../ChatBubble';
 import Message from '../Message';
 import styles from './styles';
-import { Avatar } from 'antd'
+import Avatar from '@material-ui/core/Avatar'
 
 export default class BubbleGroup extends React.Component {
   props;
@@ -27,17 +27,15 @@ export default class BubbleGroup extends React.Component {
     const ChatBubble = chatBubble || DefaultChatBubble;
     const sampleMessage = messages[0];
 
-    const messageNodes = messages.map((message, i) => {
+    const messageNodes = messages.map((message, index) => {
       return (
-        <div>
-          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-          <ChatBubble
-            key={i}
-            message={message}
-            bubblesCentered={bubblesCentered}
-            bubbleStyles={bubbleStyles}
-          />
-        </div>
+        <ChatBubble
+          key={index}
+          index={index}
+          message={message}
+          bubblesCentered={bubblesCentered}
+          bubbleStyles={bubbleStyles}
+        />
       );
     });
 
@@ -46,14 +44,18 @@ export default class BubbleGroup extends React.Component {
         {showSenderName &&
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id !== 0 && (
-              <h5 style={styles.bubbleGroupHeader}>
-                {senderName || sampleMessage.senderName}
-              </h5>
+              <div>
+                <Avatar style={{ float: 'left' }} alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                <h5 style={styles.bubbleGroupHeader}>
+                  {senderName || sampleMessage.senderName}
+                </h5>
+              </div>
             )))}
         {showSenderName &&
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id === 0 && (
-              <div style={{ overflow: 'auto' }}>
+              <div>
+                <Avatar style={{ float: 'right' }} alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
                 <h5 style={styles.myGroupHeader}>
                   Me
               </h5>

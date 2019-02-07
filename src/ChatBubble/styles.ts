@@ -31,4 +31,11 @@ export default {
     fontWeight: '300',
     margin: 0,
   },
+
+  right40: {
+    marginRight: 40
+  },
+  left40: {
+    marginLeft: 40
+  }
 };

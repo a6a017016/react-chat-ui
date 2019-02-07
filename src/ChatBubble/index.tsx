@@ -25,28 +25,41 @@ export default class ChatBubble extends React.Component {
     const chatBubbleStyles =
       this.props.message.id === 0
         ? {
-            ...styles.chatbubble,
-            ...bubblesCentered ? {} : styles.chatbubbleOrientationNormal,
-            ...chatbubble,
-            ...userBubble,
-          }
+          ...styles.chatbubble,
+          ...bubblesCentered ? {} : styles.chatbubbleOrientationNormal,
+          ...chatbubble,
+          ...userBubble,
+        }
         : {
-            ...styles.chatbubble,
-            ...styles.recipientChatbubble,
-            ...bubblesCentered
-              ? {}
-              : styles.recipientChatbubbleOrientationNormal,
-            ...chatbubble,
-            ...userBubble,
-          };
+          ...styles.chatbubble,
+          ...styles.recipientChatbubble,
+          ...bubblesCentered
+            ? {}
+            : styles.recipientChatbubbleOrientationNormal,
+          ...chatbubble,
+          ...userBubble,
+        };
 
+    let finalChatBubbleStyles = chatBubbleStyles
+    if (this.props.index !== 0 && this.props.message.id === 0) {
+      finalChatBubbleStyles = {
+        ...chatBubbleStyles,
+        ...styles.right40
+      }
+    } else if (this.props.index !== 0 && this.props.message.id !== 0) {
+      console.log(this.props.message.id)
+      finalChatBubbleStyles = {
+        ...chatBubbleStyles,
+        ...styles.left40
+      }
+    }
     return (
       <div
         style={{
           ...styles.chatbubbleWrapper,
         }}
       >
-        <div style={chatBubbleStyles}>
+        <div style={finalChatBubbleStyles}>
           <p style={{ ...styles.p, ...text }}>{this.props.message.message}</p>
         </div>
       </div>

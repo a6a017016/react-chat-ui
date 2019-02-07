@@ -47,7 +47,6 @@ export default class ChatBubble extends React.Component {
         ...styles.right40
       }
     } else if (this.props.index !== 0 && this.props.message.id !== 0) {
-      console.log(this.props.message.id)
       finalChatBubbleStyles = {
         ...chatBubbleStyles,
         ...styles.left40

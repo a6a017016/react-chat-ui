@@ -11,4 +11,11 @@ export default {
     fontWeight: '400',
     color: '#999',
   },
+  myGroupHeader: {
+    float: 'right',
+    margin: 0,
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#999',
+  },
 };

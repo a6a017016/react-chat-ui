@@ -3,6 +3,7 @@ import BubbleGroupInterface from './interface';
 import DefaultChatBubble from '../ChatBubble';
 import Message from '../Message';
 import styles from './styles';
+import { Avatar } from 'antd'
 
 export default class BubbleGroup extends React.Component {
   props;
@@ -28,12 +29,15 @@ export default class BubbleGroup extends React.Component {
 
     const messageNodes = messages.map((message, i) => {
       return (
-        <ChatBubble
-          key={i}
-          message={message}
-          bubblesCentered={bubblesCentered}
-          bubbleStyles={bubbleStyles}
-        />
+        <div>
+          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+          <ChatBubble
+            key={i}
+            message={message}
+            bubblesCentered={bubblesCentered}
+            bubbleStyles={bubbleStyles}
+          />
+        </div>
       );
     });
 
@@ -45,6 +49,15 @@ export default class BubbleGroup extends React.Component {
               <h5 style={styles.bubbleGroupHeader}>
                 {senderName || sampleMessage.senderName}
               </h5>
+            )))}
+        {showSenderName &&
+          ((senderName || sampleMessage.senderName) !== '' &&
+            (sampleMessage.id === 0 && (
+              <div style={{ overflow: 'auto' }}>
+                <h5 style={styles.myGroupHeader}>
+                  Me
+              </h5>
+              </div>
             )))}
         {messageNodes}
       </div>

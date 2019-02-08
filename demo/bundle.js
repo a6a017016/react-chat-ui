@@ -310,7 +310,7 @@ var BubbleGroup = function (_React$Component) {
                 return React.createElement(ChatBubble, { key: index, index: index, message: message, bubblesCentered: bubblesCentered, bubbleStyles: bubbleStyles });
             });
             var sampleAvaImgSrc = 'https://material-ui.com/static/images/avatar/1.jpg';
-            return React.createElement("div", { style: styles_1.default.chatbubbleWrapper }, showSenderName && (senderName || sampleMessage.senderName) !== '' && sampleMessage.id !== 0 && React.createElement("div", null, React.createElement(Avatar_1.default, { style: { float: 'left' }, alt: "Remy Sharp", src: sampleMessage.avatarSrc || sampleAvaImgSrc }), React.createElement("h5", { style: styles_1.default.bubbleGroupHeader }, senderName || sampleMessage.senderName, " - ", sampleMessage.time ? moment(sampleMessage.time).format('hh:mm') : {})), showSenderName && (senderName || sampleMessage.senderName) !== '' && sampleMessage.id === 0 && React.createElement("div", null, React.createElement(Avatar_1.default, { style: { float: 'right' }, alt: "Remy Sharp", src: sampleMessage.avatarSrc || sampleAvaImgSrc }), React.createElement("h5", { style: styles_1.default.myGroupHeader }, "Me - ", sampleMessage.time ? moment(sampleMessage.time).format('hh:mm') : {})), messageNodes);
+            return React.createElement("div", { style: styles_1.default.chatbubbleWrapper }, showSenderName && (senderName || sampleMessage.senderName) !== '' && sampleMessage.id !== 0 && React.createElement("div", null, React.createElement(Avatar_1.default, { style: { float: 'left' }, alt: "Remy Sharp", src: sampleMessage.avatarSrc || sampleAvaImgSrc }), React.createElement("h5", { style: styles_1.default.bubbleGroupHeader }, senderName || sampleMessage.senderName, " - ", sampleMessage.time ? moment(sampleMessage.time).format('hh:mm A') : {})), showSenderName && (senderName || sampleMessage.senderName) !== '' && sampleMessage.id === 0 && React.createElement("div", null, React.createElement(Avatar_1.default, { style: { float: 'right' }, alt: "Remy Sharp", src: sampleMessage.avatarSrc || sampleAvaImgSrc }), React.createElement("h5", { style: styles_1.default.myGroupHeader }, "Me - ", sampleMessage.time ? moment(sampleMessage.time).format('hh:mm A') : {})), messageNodes);
         }
     }, {
         key: "render",
@@ -518,7 +518,7 @@ var ChatFeed = function (_React$Component) {
             var group = [];
             var messageNodes = messages.map(function (message, index) {
                 group.push(message);
-                if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0)) {
+                if (!messages[index + 1] || messages[index + 1].id !== message.id || messages[index - 1] && new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0)) {
                     var messageGroup = group;
                     group = [];
                     if (index === 0 || new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index - 1].time.getTime()).setHours(0, 0, 0, 0)) {

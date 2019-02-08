@@ -48,7 +48,7 @@ export default class BubbleGroup extends React.Component {
               <div>
                 <Avatar style={{ float: 'left' }} alt="Remy Sharp" src={sampleMessage.avatarSrc || sampleAvaImgSrc} />
                 <h5 style={styles.bubbleGroupHeader}>
-                  {senderName || sampleMessage.senderName} - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm') : {}}
+                  {senderName || sampleMessage.senderName} - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm A') : {}}
                 </h5>
               </div>
             )))}
@@ -58,7 +58,7 @@ export default class BubbleGroup extends React.Component {
               <div>
                 <Avatar style={{ float: 'right' }} alt="Remy Sharp" src={sampleMessage.avatarSrc || sampleAvaImgSrc} />
                 <h5 style={styles.myGroupHeader}>
-                  Me - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm') : {}}
+                  Me - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm A') : {}}
                 </h5>
               </div>
             )))}

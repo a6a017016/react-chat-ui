@@ -65,7 +65,7 @@ export default class ChatFeed extends React.Component {
     const messageNodes = messages.map((message, index) => {
       group.push(message);
       // Find diff in message type or no more messages
-      if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0)) {
+      if (!messages[index + 1] || messages[index + 1].id !== message.id || messages[index - 1] && (new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0))) {
         const messageGroup = group;
         group = [];
         if (index === 0 || (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index - 1].time.getTime()).setHours(0, 0, 0, 0))) {

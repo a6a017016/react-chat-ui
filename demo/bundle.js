@@ -74,7 +74,7 @@ var Chat = function (_React$Component) {
         id: 2,
         message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
         senderName: 'Evan',
-        time: new Date()
+        time: new Date(new Date().setDate(7))
       })],
       useCustomBubble: false,
       curr_user: 0
@@ -518,7 +518,7 @@ var ChatFeed = function (_React$Component) {
             var group = [];
             var messageNodes = messages.map(function (message, index) {
                 group.push(message);
-                if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index + 1].time.getTime()).setSeconds(0, 0)) {
+                if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0)) {
                     var messageGroup = group;
                     group = [];
                     if (index === 0 || new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index - 1].time.getTime()).setHours(0, 0, 0, 0)) {
@@ -526,7 +526,7 @@ var ChatFeed = function (_React$Component) {
                         if (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)) {
                             dateStr = 'Today';
                         }
-                        return React.createElement("div", null, React.createElement("div", { style: { textAlign: 'center', padding: 10, backgroundColor: '#D8D8D8', borderRadius: 100, width: 100, margin: "5 auto" } }, dateStr), React.createElement(BubbleGroup_1.default, { key: index, messages: messageGroup, id: message.id, showSenderName: showSenderName, chatBubble: ChatBubble, bubbleStyles: bubbleStyles }));
+                        return React.createElement("div", { key: index }, React.createElement("div", { style: { textAlign: 'center', padding: 10, backgroundColor: '#D8D8D8', borderRadius: 100, width: 100, margin: "5px auto" } }, dateStr), React.createElement(BubbleGroup_1.default, { key: index, messages: messageGroup, id: message.id, showSenderName: showSenderName, chatBubble: ChatBubble, bubbleStyles: bubbleStyles }));
                     } else {
                         return React.createElement(BubbleGroup_1.default, { key: index, messages: messageGroup, id: message.id, showSenderName: showSenderName, chatBubble: ChatBubble, bubbleStyles: bubbleStyles });
                     }

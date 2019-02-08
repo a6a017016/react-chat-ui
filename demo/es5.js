@@ -73,7 +73,7 @@ var Chat = function (_React$Component) {
         id: 2,
         message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
         senderName: 'Evan',
-        time: new Date()
+        time: new Date(new Date().setDate(7))
       })],
       useCustomBubble: false,
       curr_user: 0

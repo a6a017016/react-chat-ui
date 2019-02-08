@@ -65,10 +65,10 @@ export default class ChatFeed extends React.Component {
     const messageNodes = messages.map((message, index) => {
       group.push(message);
       // Find diff in message type or no more messages
-      if (!messages[index + 1] || messages[index + 1].id !== message.id || messages[index - 1] && (new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index - 1].time.getTime()).setSeconds(0, 0))) {
+      if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index + 1].time.getTime()).setSeconds(0, 0)) {
         const messageGroup = group;
         group = [];
-        if (index === 0 || (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index - 1].time.getTime()).setHours(0, 0, 0, 0))) {
+        if (index === 0) {
           let dateStr = moment(messages[index].time).format('YYYY/MM/DD');
           if (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)) {
             dateStr = 'Today'
@@ -84,6 +84,24 @@ export default class ChatFeed extends React.Component {
                 chatBubble={ChatBubble}
                 bubbleStyles={bubbleStyles}
               />
+            </div>)
+        }
+        if (messages[index + 1] && (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index + 1].time.getTime()).setHours(0, 0, 0, 0))) {
+          let dateStr = moment(messages[index + 1].time).format('YYYY/MM/DD');
+          if (new Date(messages[index + 1].time.getTime()).setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)) {
+            dateStr = 'Today'
+          }
+          return (
+            <div key={index}>
+              <BubbleGroup
+                key={index}
+                messages={messageGroup}
+                id={message.id}
+                showSenderName={showSenderName}
+                chatBubble={ChatBubble}
+                bubbleStyles={bubbleStyles}
+              />
+              <div style={{ textAlign: 'center', padding: 10, backgroundColor: '#D8D8D8', borderRadius: 100, width: 100, margin: "5px auto" }}>{dateStr}</div>
             </div>
           )
         } else {

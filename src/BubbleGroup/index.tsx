@@ -4,6 +4,7 @@ import DefaultChatBubble from '../ChatBubble';
 import Message from '../Message';
 import styles from './styles';
 import Avatar from '@material-ui/core/Avatar'
+import * as moment from 'moment'
 
 export default class BubbleGroup extends React.Component {
   props;
@@ -38,16 +39,16 @@ export default class BubbleGroup extends React.Component {
         />
       );
     });
-
+    let sampleAvaImgSrc = 'https://material-ui.com/static/images/avatar/1.jpg';
     return (
       <div style={styles.chatbubbleWrapper}>
         {showSenderName &&
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id !== 0 && (
               <div>
-                <Avatar style={{ float: 'left' }} alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                <Avatar style={{ float: 'left' }} alt="Remy Sharp" src={sampleMessage.avatarSrc || sampleAvaImgSrc} />
                 <h5 style={styles.bubbleGroupHeader}>
-                  {senderName || sampleMessage.senderName}
+                  {senderName || sampleMessage.senderName} - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm') : {}}
                 </h5>
               </div>
             )))}
@@ -55,10 +56,10 @@ export default class BubbleGroup extends React.Component {
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id === 0 && (
               <div>
-                <Avatar style={{ float: 'right' }} alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                <Avatar style={{ float: 'right' }} alt="Remy Sharp" src={sampleMessage.avatarSrc || sampleAvaImgSrc} />
                 <h5 style={styles.myGroupHeader}>
-                  Me
-              </h5>
+                  Me - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm') : {}}
+                </h5>
               </div>
             )))}
         {messageNodes}

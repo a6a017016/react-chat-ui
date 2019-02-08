@@ -7,7 +7,8 @@ interface MessageData {
   id: number | string;
   message: string;
   senderName?: string;
-  time?: number | string
+  time: Date;
+  avatarSrc: string;
 }
 
 export default class Message {
@@ -17,11 +18,13 @@ export default class Message {
   id: number | string;
   message: string;
   senderName?: string;
-  time?: number|string
+  time: Date;
+  avatarSrc: string;
   constructor(messageData: MessageData) {
     this.id = messageData.id; // id of the sender (0 is reserved for "blue bubble")
     this.message = messageData.message;
     this.senderName = messageData.senderName || undefined;
     this.time = messageData.time
+    this.avatarSrc = messageData.avatarSrc
   }
 }

@@ -69,10 +69,11 @@ var Chat = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Chat.__proto__ || Object.getPrototypeOf(Chat)).call(this));
 
     _this.state = {
-      messages: [new _lib.Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark' }), new _lib.Message({
+      messages: [new _lib.Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)) }), new _lib.Message({
         id: 2,
         message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
-        senderName: 'Evan'
+        senderName: 'Evan',
+        time: new Date()
       })],
       useCustomBubble: false,
       curr_user: 0
@@ -104,7 +105,8 @@ var Chat = function (_React$Component) {
       var newMessage = new _lib.Message({
         id: recipient,
         message: message,
-        senderName: users[recipient]
+        senderName: users[recipient],
+        time: new Date()
       });
       prevState.messages.push(newMessage);
       this.setState(this.state);
@@ -222,10 +224,10 @@ var Chat = function (_React$Component) {
           'There are Bubbles!'
         ),
         _react2.default.createElement(_lib.ChatBubble, {
-          message: new _lib.Message({ id: 1, message: 'I float to the left!' })
+          message: new _lib.Message({ id: 1, message: 'I float to the left!', time: new Date() })
         }),
         _react2.default.createElement(_lib.ChatBubble, {
-          message: new _lib.Message({ id: 0, message: 'I float to the right!' })
+          message: new _lib.Message({ id: 0, message: 'I float to the right!', time: new Date() })
         }),
         _react2.default.createElement(
           'h2',
@@ -233,21 +235,23 @@ var Chat = function (_React$Component) {
           'And we have Bubble Groups!'
         ),
         _react2.default.createElement(_lib.BubbleGroup, {
-          messages: [new _lib.Message({ id: 1, message: 'Hey!' }), new _lib.Message({ id: 1, message: 'I forgot to mention...' }), new _lib.Message({
+          messages: [new _lib.Message({ id: 1, message: 'Hey!', time: new Date() }), new _lib.Message({ id: 1, message: 'I forgot to mention...', time: new Date() }), new _lib.Message({
             id: 1,
-            message: "Oh no, I forgot... I think I was going to say I'm a BubbleGroup"
+            message: "Oh no, I forgot... I think I was going to say I'm a BubbleGroup",
+            time: new Date()
           })],
           id: 1,
           showSenderName: true,
           senderName: 'Elon Musk'
         }),
         _react2.default.createElement(_lib.ChatBubble, {
-          message: new _lib.Message({ id: 2, message: "I 'm a single ChatBubble!" })
+          message: new _lib.Message({ id: 2, message: "I 'm a single ChatBubble!", time: new Date() })
         }),
         _react2.default.createElement(_lib.BubbleGroup, {
-          messages: [new _lib.Message({ id: 0, message: 'How could you forget already?!' }), new _lib.Message({
+          messages: [new _lib.Message({ id: 0, message: 'How could you forget already?!', time: new Date() }), new _lib.Message({
             id: 0,
-            message: "Oh well. I'm a BubbleGroup as well"
+            message: "Oh well. I'm a BubbleGroup as well",
+            time: new Date()
           })],
           id: 1,
           showSenderName: true,

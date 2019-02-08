@@ -34,7 +34,7 @@ const customBubble = props => (
   <div>
     <p>{`${props.message.senderName} ${props.message.id ? 'says' : 'said'}: ${
       props.message.message
-    }`}</p>
+      }`}</p>
   </div>
 );
 
@@ -43,11 +43,12 @@ class Chat extends React.Component {
     super();
     this.state = {
       messages: [
-        new Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark' }),
+        new Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)) }),
         new Message({
           id: 2,
           message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
           senderName: 'Evan',
+          time: new Date()
         }),
       ],
       useCustomBubble: false,
@@ -76,6 +77,7 @@ class Chat extends React.Component {
       id: recipient,
       message,
       senderName: users[recipient],
+      time: new Date()
     });
     prevState.messages.push(newMessage);
     this.setState(this.state);
@@ -161,21 +163,22 @@ class Chat extends React.Component {
         </div>
         <h2 className="text-center">There are Bubbles!</h2>
         <ChatBubble
-          message={new Message({ id: 1, message: 'I float to the left!' })}
+          message={new Message({ id: 1, message: 'I float to the left!', time: new Date() })}
         />
         <ChatBubble
-          message={new Message({ id: 0, message: 'I float to the right!' })}
+          message={new Message({ id: 0, message: 'I float to the right!', time: new Date() })}
         />
 
         <h2 className="text-center">And we have Bubble Groups!</h2>
         <BubbleGroup
           messages={[
-            new Message({ id: 1, message: 'Hey!' }),
-            new Message({ id: 1, message: 'I forgot to mention...' }),
+            new Message({ id: 1, message: 'Hey!', time: new Date() }),
+            new Message({ id: 1, message: 'I forgot to mention...', time: new Date() }),
             new Message({
               id: 1,
               message:
                 "Oh no, I forgot... I think I was going to say I'm a BubbleGroup",
+              time: new Date()
             }),
           ]}
           id={1}
@@ -183,14 +186,15 @@ class Chat extends React.Component {
           senderName={'Elon Musk'}
         />
         <ChatBubble
-          message={new Message({ id: 2, message: "I 'm a single ChatBubble!" })}
+          message={new Message({ id: 2, message: "I 'm a single ChatBubble!", time: new Date() })}
         />
         <BubbleGroup
           messages={[
-            new Message({ id: 0, message: 'How could you forget already?!' }),
+            new Message({ id: 0, message: 'How could you forget already?!', time: new Date() }),
             new Message({
               id: 0,
               message: "Oh well. I'm a BubbleGroup as well",
+              time: new Date()
             }),
           ]}
           id={1}

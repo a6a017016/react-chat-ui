@@ -8,6 +8,7 @@ import DefaultChatBubble from '../ChatBubble';
 import ChatInput from '../ChatInput';
 import Message from '../Message';
 import styles from './styles';
+import * as moment from 'moment'
 
 // Model for ChatFeed props.
 interface ChatFeedInterface {
@@ -64,19 +65,39 @@ export default class ChatFeed extends React.Component {
     const messageNodes = messages.map((message, index) => {
       group.push(message);
       // Find diff in message type or no more messages
-      if (!messages[index + 1] || messages[index + 1].id !== message.id) {
+      if (!messages[index + 1] || messages[index + 1].id !== message.id || new Date(messages[index].time.getTime()).setSeconds(0, 0) !== new Date(messages[index + 1].time.getTime()).setSeconds(0, 0)) {
         const messageGroup = group;
         group = [];
-        return (
-          <BubbleGroup
-            key={index}
-            messages={messageGroup}
-            id={message.id}
-            showSenderName={showSenderName}
-            chatBubble={ChatBubble}
-            bubbleStyles={bubbleStyles}
-          />
-        );
+        if (index === 0 || (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) !== new Date(messages[index - 1].time.getTime()).setHours(0, 0, 0, 0))) {
+          let dateStr = moment(messages[index].time).format('YYYY/MM/DD');
+          if (new Date(messages[index].time.getTime()).setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0)) {
+            dateStr = 'Today'
+          }
+          return (
+            <div>
+              <div style={{ textAlign: 'center', padding: 10, backgroundColor: '#D8D8D8', borderRadius: 100, width: 100, margin: "5 auto" }}>{dateStr}</div>
+              <BubbleGroup
+                key={index}
+                messages={messageGroup}
+                id={message.id}
+                showSenderName={showSenderName}
+                chatBubble={ChatBubble}
+                bubbleStyles={bubbleStyles}
+              />
+            </div>
+          )
+        } else {
+          return (
+            <BubbleGroup
+              key={index}
+              messages={messageGroup}
+              id={message.id}
+              showSenderName={showSenderName}
+              chatBubble={ChatBubble}
+              bubbleStyles={bubbleStyles}
+            />
+          );
+        }
       }
 
       return null;

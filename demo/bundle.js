@@ -422,7 +422,7 @@ exports.default = {
         overflow: 'auto'
     },
     chatbubble: {
-        backgroundColor: '#0084FF',
+        backgroundColor: '#FDF1E8',
         borderRadius: 20,
         marginTop: 5,
         marginRight: 'auto',
@@ -445,7 +445,7 @@ exports.default = {
         float: 'left'
     },
     p: {
-        color: '#FFFFFF',
+        color: '#1A1A1A',
         fontSize: 16,
         fontWeight: '300',
         margin: 0

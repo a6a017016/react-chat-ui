@@ -12,6 +12,14 @@ var _reactDom = require('react-dom');
 
 var _lib = require('../lib');
 
+var _deepOrange = require('@material-ui/core/colors/deepOrange');
+
+var _deepOrange2 = _interopRequireDefault(_deepOrange);
+
+var _deepPurple = require('@material-ui/core/colors/deepPurple');
+
+var _deepPurple2 = _interopRequireDefault(_deepPurple);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69,11 +77,23 @@ var Chat = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Chat.__proto__ || Object.getPrototypeOf(Chat)).call(this));
 
     _this.state = {
-      messages: [new _lib.Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)) }), new _lib.Message({
+      messages: [new _lib.Message({
+        id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)),
+        avatarStyle: {
+          margin: 10,
+          color: '#fff',
+          backgroundColor: _deepOrange2.default[500]
+        }
+      }), new _lib.Message({
         id: 2,
         message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
         senderName: 'Evan',
-        time: new Date(new Date().setDate(7))
+        time: new Date(new Date().setDate(7)),
+        avatarStyle: {
+          margin: 10,
+          color: '#fff',
+          backgroundColor: _deepPurple2.default[500]
+        }
       })],
       useCustomBubble: false,
       curr_user: 0

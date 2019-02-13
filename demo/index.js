@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { ChatFeed, ChatBubble, BubbleGroup, Message } from '../lib';
+import deepOrange from '@material-ui/core/colors/deepOrange';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 
 const styles = {
   button: {
@@ -43,12 +45,24 @@ class Chat extends React.Component {
     super();
     this.state = {
       messages: [
-        new Message({ id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)) }),
+        new Message({
+          id: 'Mark', message: 'Hey guys!', senderName: 'Mark', time: new Date(new Date().setDate(7)),
+          avatarStyle: {
+            margin: 10,
+            color: '#fff',
+            backgroundColor: deepOrange[500],
+          }
+        }),
         new Message({
           id: 2,
           message: 'Hey! Evan here. react-chat-ui is pretty dooope.',
           senderName: 'Evan',
-          time: new Date(new Date().setDate(7))
+          time: new Date(new Date().setDate(7)), 
+          avatarStyle: {
+            margin: 10,
+            color: '#fff',
+            backgroundColor: deepPurple[500],
+          }
         }),
       ],
       useCustomBubble: false,

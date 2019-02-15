@@ -4,7 +4,6 @@ export default {
   },
   chatbubble: {
     backgroundColor: '#FDF1E8',
-    borderRadius: 20,
     marginTop: 5,
     marginRight: 'auto',
     marginBottom: 1,
@@ -33,9 +32,9 @@ export default {
   },
 
   right40: {
-    marginRight: 40
+    marginRight: 60
   },
   left40: {
-    marginLeft: 40
+    marginLeft: 60
   }
 };

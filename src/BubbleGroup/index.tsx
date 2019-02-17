@@ -46,7 +46,7 @@ export default class BubbleGroup extends React.Component {
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id !== 0 && (
               <div>
-                <Avatar style={{ ...sampleMessage.avatarStyle, float: 'left', margin : '0 10px' }}>{sampleMessage.avatarSrc || 'RE'}</Avatar>
+                <Avatar style={{ ...sampleMessage.avatarStyle, float: 'left', margin: '0 10px' }} src={sampleMessage.avatarSrc || 'https://material-ui.com/static/images/avatar/1.jpg'} />
                 <h5 style={styles.bubbleGroupHeader}>
                   {senderName || sampleMessage.senderName} - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm A') : {}}
                 </h5>
@@ -56,7 +56,7 @@ export default class BubbleGroup extends React.Component {
           ((senderName || sampleMessage.senderName) !== '' &&
             (sampleMessage.id === 0 && (
               <div>
-                <Avatar style={{ ...sampleMessage.avatarStyle, float: 'right' , margin : '0 10px' }}>{sampleMessage.avatarSrc || 'SD'}</Avatar>
+                <Avatar style={{ ...sampleMessage.avatarStyle, float: 'right', margin: '0 10px' }} src={sampleMessage.avatarSrc || 'https://material-ui.com/static/images/avatar/1.jpg'} />
                 <h5 style={styles.myGroupHeader}>
                   Me - {(sampleMessage.time) ? moment(sampleMessage.time).format('hh:mm A') : {}}
                 </h5>
